@@ -1,0 +1,42 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="Bolg.MasterPage" %>
+
+<%@ Register Src="~/UserConrols/Header.ascx" TagPrefix="uc1" TagName="Header" %>
+<%@ Register Src="~/UserConrols/Left.ascx" TagPrefix="uc1" TagName="Left" %>
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <table style="margin:0 auto">
+            <tr>
+                <td colspan="2" style="width:778px;height:157px">
+                    <uc1:Header runat="server" id="Header" />
+                </td>
+            </tr>
+            <tr >
+                <td >
+                    <uc1:Left runat="server" ID="Left" />
+                </td>
+                <td style="vertical-align:top;width:557px">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+        </table>
+        
+    </div>
+    </form>
+</body>
+</html>
