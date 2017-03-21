@@ -13,5 +13,12 @@ namespace Bolg.management
         {
 
         }
+
+        protected void btn_quit_Click(object sender, EventArgs e)
+        {
+            Session["username"] = null;
+            Session["usertype"] = null;
+            Response.Redirect("../management/Login.aspx");
+        }
     }
 }

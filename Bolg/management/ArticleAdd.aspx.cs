@@ -7,26 +7,30 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Bolg
+namespace Bolg.management
 {
-    public partial class ArtticlePage : System.Web.UI.Page
+    public partial class ArticleAdd : System.Web.UI.Page
     {
         DBClass db = new DBClass();
         CommonClass cc = new CommonClass();
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                if (!cc.Check(this))
+                {
+                    Response.Redirect("../management/Login.aspx");
+                }
                 string userid = ViewState["userid"] == null ? "1" : ViewState["userid"].ToString();
-                string articleid = Request["articleid"] == null ? null:Request["articleid"].ToString();
+                string articleid = Request["articleid"] == null ? null : Request["articleid"].ToString();
                 InitPage(articleid);
             }
         }
 
         private void InitPage(string articleid)
         {
-            if(articleid == null)
+            if (articleid == null)
             {
                 h1Edit.Visible = false;
                 btnUpdate.Visible = false;
@@ -41,13 +45,13 @@ namespace Bolg
 
         private void LoadAtricle(string id)
         {
-            string sql = @"select * from tb_Article where ArticleID ='" + id +"'";           
+            string sql = @"select * from tb_Article where ArticleID ='" + id + "'";
             DataTable dataTable = db.GetDataSet(sql, "Article");
             if (dataTable.Rows.Count > 0)
             {
                 tbTitle.Text = dataTable.Rows[0]["articletitle"].ToString();
                 tbAbstract.Text = dataTable.Rows[0]["articleabstract"].ToString();
-                container.InnerText = dataTable.Rows[0]["Content"].ToString();
+                myEditor.InnerText = dataTable.Rows[0]["Content"].ToString();
             }
         }
 
@@ -55,7 +59,7 @@ namespace Bolg
         {
             string subject = tbTitle.Text.ToString();
             string abstracts = tbAbstract.Text.ToString();
-            string content = container.InnerText.ToString() ;
+            string content = myEditor.InnerText.ToString();
             string articleid = Request["articleid"] == null ? null : Request["articleid"].ToString();
             string sql = @"update tb_Article set articletitle = '" + subject + "',articleabstract='" + abstracts + "',Content='" + content + "' where articleid='" + articleid + "'";
             int re = db.Update(sql);
@@ -71,15 +75,15 @@ namespace Bolg
             string userid = ViewState["userid"] == null ? "1" : ViewState["userid"].ToString();
             string subject = tbTitle.Text.ToString();
             string abstracts = tbAbstract.Text.ToString();
-            string content = container.InnerText.ToString();
+            string content = myEditor.InnerText.ToString();
             string sql = @"Insert into tb_Article (articletitle,articleabstract,Content,authorid) values( '" + subject + "','" + abstracts + "','" + content + "'," + userid + ")";
             string lastInsertId = db.Insert(sql);
-            if (lastInsertId !=null)
+            if (lastInsertId != null)
             {
                 Response.Write(cc.MessageBox("添加成功！"));
                 LoadAtricle(lastInsertId);
             }
-            else{
+            else {
                 Response.Write(cc.MessageBox("糟糕出现错误了！"));
             }
         }

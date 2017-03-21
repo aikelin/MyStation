@@ -1,20 +1,12 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" ValidateRequest="false" CodeBehind="ArticleEditPage.aspx.cs" Inherits="Bolg.ArtticlePage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/management/management.Master" ValidateRequest="false" AutoEventWireup="true" CodeBehind="ArticleAdd.aspx.cs" Inherits="Bolg.management.ArticleAdd" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml" >
-<head runat="server">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title></title>
-    <script src="Scripts/jquery-1.9.1.min.js"></script>
-    <script src="Scripts/bootstrap.min.js"></script>
-    <link href="Content/bootstrap.min.css" rel="stylesheet" />
-    <script src="ueditor1_4_3_3-utf8-net/ueditor.config.js"></script>
-    <script src="ueditor1_4_3_3-utf8-net/ueditor.all.js"></script>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div class="container">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <script src="../ueditor1_4_3_3-utf8-net/ueditor.config.js"></script>
+    <script src="../ueditor1_4_3_3-utf8-net/ueditor.all.js"></script>
+    <div>
+    <div class="container">
             <div style="text-align: center">
                 <h1 runat="server"  id="h1Add">文章添加</h1>
                 <h1 runat="server"  id="h1Edit">文章修改</h1>                
@@ -38,13 +30,13 @@
             <div>
                 正文
 
-                <textarea id="container" name="container" runat="server"></textarea>
-                <script type="text/javascript">
-                    var ue = UE.getEditor('container');
-                </script>
+                <textarea id="myEditor" runat="server"  ClientIDMode="Static"></textarea>   
+<script type="text/javascript">
+        var ue = new baidu.editor.ui.Editor();
+        ue.render("myEditor");   //这里填写要改变为编辑器的控件id
+</script>
             </div>
 
         </div>
-    </form>
-</body>
-</html>
+        </div>
+</asp:Content>
