@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.UI;
 
 namespace Bolg.App_Code
 {
@@ -54,6 +55,19 @@ namespace Bolg.App_Code
                 randString += VcArray[randNum];                            
             }
             return randString;
+        }
+
+        public bool Check(Page page)
+        {
+            string usertype = page.Session["usertype"] == null ? null : page.Session["usertype"].ToString();
+            if(usertype == "1")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

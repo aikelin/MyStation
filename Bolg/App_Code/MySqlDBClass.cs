@@ -93,5 +93,27 @@ namespace Bolg.App_Code
             }
         }
 
+        public object MygetExecuteScalar(string sql)
+        {
+            try
+            {
+                myConn = GetMySqlConnection();
+                myConn.Open();
+                myComm = new MySqlCommand();
+                myComm.Connection = myConn;
+                myComm.CommandText = sql;
+                return myComm.ExecuteScalar();
+            }catch(Exception ex)
+            {
+                throw new Exception(ex.Message, ex);
+            }
+            finally
+            {
+                myConn.Close();
+                myComm.Dispose();
+            }
+            
+        }
+
     }
 }

@@ -43,11 +43,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentData, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\FluentData.dll</HintPath>
+    </Reference>
+    <Reference Include="HOYI_ENTITY, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\HOYI_ENTITY\bin\Debug\HOYI_ENTITY.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\MySql.Data.dll</HintPath>
@@ -61,6 +73,30 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -71,7 +107,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ArticlePage.aspx" />
-    <Content Include="ArticleEditPage.aspx" />
+    <Content Include="bin\FluentData.dll" />
+    <Content Include="Images\home\orangutan.PNG" />
+    <Content Include="management\AdminPage.aspx" />
+    <Content Include="management\ArticleAdd.aspx" />
+    <Content Include="management\ArticleEditPage.aspx" />
     <Content Include="bin\MySql.Data.dll" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -95,7 +135,12 @@
     <Content Include="Images\大背景.jpg" />
     <Content Include="Images\最新评论右侧.jpg" />
     <Content Include="Images\登录.jpg" />
+    <Content Include="management\ArticleManageList.ascx" />
+    <Content Include="management\ArticleManageList.aspx" />
+    <Content Include="management\Login.aspx" />
+    <Content Include="management\Main.aspx" />
     <Content Include="management\NavManager.aspx" />
+    <Content Include="management\ValidateNum.aspx" />
     <Content Include="packages.config" />
     <Content Include="MasterPage.Master" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -109,7 +154,7 @@
     <Content Include="MasterPage1.Master" />
     <Content Include="UserConrols\ArticleList.ascx" />
     <Content Include="UserConrols\Footer.ascx" />
-    <Content Include="WebService1.asmx" />
+    <Content Include="WebForm1.aspx" />
     <Content Include="management\management.Master" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -409,6 +454,7 @@
     <Content Include="App_Code\WebService.cs">
       <SubType>Component</SubType>
     </Content>
+    <Compile Include="App_Code\FluentDB.cs" />
     <Compile Include="App_Code\MySqlDBClass.cs" />
     <Compile Include="App_Code\SqlDBClass.cs" />
     <Compile Include="ArticlePage.aspx.cs">
@@ -418,11 +464,25 @@
     <Compile Include="ArticlePage.aspx.designer.cs">
       <DependentUpon>ArticlePage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ArticleEditPage.aspx.cs">
+    <Compile Include="management\AdminPage.aspx.cs">
+      <DependentUpon>AdminPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="management\AdminPage.aspx.designer.cs">
+      <DependentUpon>AdminPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="management\ArticleAdd.aspx.cs">
+      <DependentUpon>ArticleAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="management\ArticleAdd.aspx.designer.cs">
+      <DependentUpon>ArticleAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="management\ArticleEditPage.aspx.cs">
       <DependentUpon>ArticleEditPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ArticleEditPage.aspx.designer.cs">
+    <Compile Include="management\ArticleEditPage.aspx.designer.cs">
       <DependentUpon>ArticleEditPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Home.aspx.cs">
@@ -431,6 +491,34 @@
     </Compile>
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="management\ArticleManageList.ascx.cs">
+      <DependentUpon>ArticleManageList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="management\ArticleManageList.ascx.designer.cs">
+      <DependentUpon>ArticleManageList.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="management\ArticleManageList.aspx.cs">
+      <DependentUpon>ArticleManageList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="management\ArticleManageList.aspx.designer.cs">
+      <DependentUpon>ArticleManageList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="management\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="management\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="management\Main.aspx.cs">
+      <DependentUpon>Main.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="management\Main.aspx.designer.cs">
+      <DependentUpon>Main.aspx</DependentUpon>
     </Compile>
     <Compile Include="management\management.Master.cs">
       <DependentUpon>management.Master</DependentUpon>
@@ -445,6 +533,13 @@
     </Compile>
     <Compile Include="management\NavManager.aspx.designer.cs">
       <DependentUpon>NavManager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="management\ValidateNum.aspx.cs">
+      <DependentUpon>ValidateNum.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="management\ValidateNum.aspx.designer.cs">
+      <DependentUpon>ValidateNum.aspx</DependentUpon>
     </Compile>
     <Compile Include="MasterPage1.Master.cs">
       <DependentUpon>MasterPage1.Master</DependentUpon>
@@ -505,9 +600,12 @@
       <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebService1.asmx.cs">
-      <DependentUpon>WebService1.asmx</DependentUpon>
-      <SubType>Component</SubType>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
